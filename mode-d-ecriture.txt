@@ -1,0 +1,4 @@
+ceciEstDuLowerCamelCase
+CeciEstDuUpperCamelCase
+ceci_est_du_snake
+ceci-est-du-slug

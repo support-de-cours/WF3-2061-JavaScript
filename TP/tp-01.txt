@@ -1,0 +1,5 @@
+Définir une variable pour l'age de l'utilisateur.
+Affiche 
+- l'utilisateur est un adulte (+18)
+- l'utilisateur est un ado (+13)
+- L'utilisateur est un bébé
