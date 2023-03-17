@@ -176,23 +176,24 @@
 // Fonctions fléchées
 // --
 
-fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
-    .then( response => response.json() )
-    // .then( (response) => {response.json()} )
-    .then(data => console.log(data))
+// fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
+//     .then( response => response.json() )
+//     // .then( (response) => {response.json()} )
+//     .then(data => console.log(data))
 
 
 
-let btn = document.querySelector('#myBtn1');
-btn.addEventListener('click', function(event){
-    // instrunctions
-} );
+// let btn = document.querySelector('#myBtn1');
+// btn.addEventListener('click', function(event){
+//     // instrunctions
+// } );
 
-let btn = document.querySelector('#myBtn1');
-btn.addEventListener('click', event => /* instructions */);
+// let btn = document.querySelector('#myBtn1');
+// btn.addEventListener('click', event => /* instruction */);
 
-let btn = document.querySelector('#myBtn1');
-btn.addEventListener('click', (event) => {/* instructions */});
+// let btn = document.querySelector('#myBtn1');
+// btn.addEventListener('click', (event) => {/* instructions */});
 
-let btn = document.querySelector('#myBtn1');
-btn.addEventListener('click', () => {/* instructions */});
+// let btn = document.querySelector('#myBtn1');
+// btn.addEventListener('click', () => {/* instructions */});
+
