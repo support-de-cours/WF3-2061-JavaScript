@@ -14,7 +14,7 @@
 
 // Les données:
 
-// Tesla :Model y
-// Renault : zoe
-// Mustang  :mach-e
-// Polestar :2
+// Tesla: Model y
+// Renault: zoe
+// Mustang: mach-e
+// Polestar: Polestar 2
