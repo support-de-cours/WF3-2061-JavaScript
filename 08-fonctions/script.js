@@ -57,37 +57,37 @@
 // Fonction simple
 // --
 
-function doSomething()
-{
-    // Instructions..
-}
+// function doSomething()
+// {
+//     // Instructions..
+// }
 
-// Fonction avec paramètre(s) en entré
+// // Fonction avec paramètre(s) en entré
 
-function doAnotherThing(a)
-{
-    // Instructions..
-}
+// function doAnotherThing(a)
+// {
+//     // Instructions..
+// }
 
-function doAnAwasomeThing(a, b, c)
-{
-    // Instructions..
+// function doAnAwasomeThing(a, b, c)
+// {
+//     // Instructions..
 
-    // console.log( a );
-    // console.log( b );
-}
+//     // console.log( a );
+//     // console.log( b );
+// }
 
-// doAnAwasomeThing("azerty", 42, true);
+// // doAnAwasomeThing("azerty", 42, true);
 
 
-// Fonction avec sortie de donnée
+// // Fonction avec sortie de donnée
 
-function doJustAThing()
-{
-    // instructions...
+// function doJustAThing()
+// {
+//     // instructions...
 
-    return value;
-}
+//     return value;
+// }
 
 
 
@@ -108,16 +108,91 @@ function doJustAThing()
 // console.log( hello );
 
 
-function addition(p1, p2)
-{
-    let a = p1;
-    let b = p2;
-    let c = a + b;
+// function addition(p1, p2)
+// {
+//     let a = p1;
+//     let b = p2;
+//     let c = a + b;
 
-    return c;
-}
+//     return c;
+// }
 
-let result = addition(10, 5);
+// let result = addition(10, 5);
 
-console.log( result + 10 );
+// console.log( result + 10 );
 
+
+
+
+// Fonctions Internes
+// --
+
+// alert("Message");
+
+// let name = prompt("Quel est votre nom ?");
+// alert( `Votre nom est ${name}` );
+
+// let isOk = confirm("Etes vous d'accord avec le 49.3 ?");
+// console.log( isOk );
+
+
+
+// Fonctions Anonymes
+// --
+
+// let myFunction = function()
+// {
+//     // instructions
+// }
+
+// // myFunction();
+
+// let btn = document.querySelector('#myBtn1');
+// btn.addEventListener('click', function(){
+//     // alert("Btn is clicked !");
+
+//     fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
+//         .then(response => response.json())
+//         .then(data => console.log(data))
+
+// });
+
+
+// function sayHello()
+// {
+//     alert("Hello There !");
+// }
+
+// sayHello();
+
+
+// let btnSayHello = document.getElementById("btnSayHello");
+// btnSayHello.addEventListener('click', sayHello);
+
+
+
+
+
+// Fonctions fléchées
+// --
+
+fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
+    .then( response => response.json() )
+    // .then( (response) => {response.json()} )
+    .then(data => console.log(data))
+
+
+
+let btn = document.querySelector('#myBtn1');
+btn.addEventListener('click', function(event){
+    // instrunctions
+} );
+
+let btn = document.querySelector('#myBtn1');
+btn.addEventListener('click', event => /* instructions */);
+
+let btn = document.querySelector('#myBtn1');
+btn.addEventListener('click', (event) => {/* instructions */});
+
+let btn = document.querySelector('#myBtn1');
+btn.addEventListener('click', () => {/* instructions */});
