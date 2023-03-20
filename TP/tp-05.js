@@ -8,10 +8,10 @@
 // - Integration des caractères spéciaux ($=+;.!-_§|) (bool)
 
 // Exemple d'utilisation: 
-let password = generatePassword(16, true, true, true);
+let password = generatePassword(5, true, true, true);
 console.log( password );
 
-function generatePassword(length=10, uppercase=false, number=false, spacial=false)
+function generatePassword(length=10, uppercase=false, number=false, special=false)
 {
     // Definition de la chaine de sortie
     let output = "";
@@ -22,7 +22,7 @@ function generatePassword(length=10, uppercase=false, number=false, spacial=fals
     // Ajoute les majuscule
     if (uppercase)
     {
-        charset+= charset.toLocaleUpperCase();
+        charset+= charset.toUpperCase();
     }
 
     // Ajoute les nombres
@@ -32,7 +32,7 @@ function generatePassword(length=10, uppercase=false, number=false, spacial=fals
     }
 
     // Ajoute les caractères spéciaux
-    if (spacial)
+    if (special)
     {
         charset+= "$=+;.!-_§|";
     }

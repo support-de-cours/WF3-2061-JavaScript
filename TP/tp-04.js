@@ -34,24 +34,27 @@ const users = [
     },
 ];
 
-function getStats(users)
+function getStats(data)
 {
+    // initialisation des variables de comptage
     let m = 0;
     let f = 0;
 
-    for (const user of users)
+    // Boucle sur le tableau "data" (users)
+    for (const user of data)
     {
+        // à chaque objet (ligne) du tableau data, stockée dans la constante "user"
+        // on test la propriété "user.gender"
         switch(user.gender)
         {
+            // On calcul les valeur de "m" et "f" lors de chaque itération
             case "M": m++; break;
             case "F": f++; break;
         }
     }
 
-    return {
-        m: m,
-        f: f
-    }
+    // Retourne le résultat des calculs de "m" et "f"
+    return { m: m, f: f }
 }
 
 const stats = getStats(users);

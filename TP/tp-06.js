@@ -7,6 +7,7 @@
 // Supprimer le véhicule a l’index 1
 // Afficher le tableau 
 // Trier le tableau par marques
+// Afficher le tableau 
 // Supprimer le dernier véhicule 
 // Afficher le tableau 
 
@@ -32,9 +33,9 @@ let cars = [
     },
 ];
 
-function showCars(cars) 
+function showCars(items) 
 {
-    for (const car of cars)
+    for (const car of items)
     {
         console.log( `${car.brand}: ${car.model}` );
     }
@@ -65,7 +66,6 @@ showCars(cars);
 
 // Trier le tableau par marques
 cars.sort((a, b) => {
-
     let fa = a.brand.toLowerCase(),
         fb = b.brand.toLowerCase();
 
@@ -78,6 +78,8 @@ cars.sort((a, b) => {
 
     return 0;
 });
+
+showCars(cars);
 
 // Supprimer le dernier véhicule 
 cars.pop();
