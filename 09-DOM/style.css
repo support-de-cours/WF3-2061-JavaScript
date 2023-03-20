@@ -1,0 +1,31 @@
+/* Selecteur universel */
+* {
+    border: 3px solid red;
+}
+
+/* Selecteur d'ID */
+#myId {
+    padding: 1rem;
+    color: blue;
+}
+
+/* Selecteur de classe */
+.myClass {
+    padding: 1rem;
+    color: pink;
+}
+
+/* Selecteur de type */
+span {
+    padding: 1rem;
+    color: red;
+}
+
+/* Selecterur d'attribut */
+[data-price] {
+    padding: 1rem;
+    color: aquamarine;
+}
+[id=myId] {
+    background-color: pink;
+}
