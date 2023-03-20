@@ -8,8 +8,8 @@
 // - Integration des caractères spéciaux ($=+;.!-_§|) (bool)
 
 // Exemple d'utilisation: 
-let password = generatePassword(5, true, true, true);
-console.log( password );
+// let password = generatePassword(16, true, true, true);
+// console.log( password );
 
 function generatePassword(length=10, uppercase=false, number=false, special=false)
 {
@@ -54,3 +54,19 @@ function generatePassword(length=10, uppercase=false, number=false, special=fals
     // Sortie du mot de passe
     return output;
 }
+
+
+const btn = document.querySelector('#genPass');
+const divPass = document.querySelector('#newPassDiv');
+const inputPass = document.querySelector('[name=newPassInput]');
+
+btn.addEventListener('click', () => {
+    // Generation du MDP
+    const newPwd = generatePassword(16, true, true, true);
+
+    // Injection du MDP dans la div
+    divPass.innerText = newPwd;
+
+    // injection du MDP dans le input
+    inputPass.value = newPwd;
+})
