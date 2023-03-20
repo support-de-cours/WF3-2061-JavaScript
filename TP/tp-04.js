@@ -33,3 +33,26 @@ const users = [
         gender: "M"
     },
 ];
+
+function getStats(users)
+{
+    let m = 0;
+    let f = 0;
+
+    for (const user of users)
+    {
+        switch(user.gender)
+        {
+            case "M": m++; break;
+            case "F": f++; break;
+        }
+    }
+
+    return {
+        m: m,
+        f: f
+    }
+}
+
+const stats = getStats(users);
+console.log( stats );
