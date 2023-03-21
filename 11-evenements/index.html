@@ -14,16 +14,39 @@
 
     <div id="div_1">Double click</div>
 
-    <div id="div_2">Mouse Over</div>
+    <div id="div_2">Mouse Over / out</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <h2>Evenements de clavier</h2>
+
+    <style>
+        .log {
+            border: 3px solid red;
+        }
+    </style>
 
     <div>
         KeyUp
         <input type="text" name="firstname">
     </div>
-    <div id="keyUpLog"></div>
+    <div id="keyUpLog" class="log"></div>
 
     <hr>
 
@@ -31,7 +54,7 @@
         KeyDown
         <input type="text" name="lastname">
     </div>
-    <div id="keyDownLog"></div>
+    <div id="keyDownLog" class="log"></div>
 
     <hr>
 
@@ -39,7 +62,38 @@
         KeyPress
         <input type="text" name="nickname">
     </div>
-    <div id="keyPressLog"></div>
+    <div id="keyPressLog" class="log"></div>
+
+    <hr>
+
+    <div>
+        onChange 1
+        <input type="email" name="email">
+    </div>
+    <div id="onChangeLog_1" class="log"></div>
+
+    <hr>
+
+    <div>
+        onChange 2
+        <select name="gender">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="N">Neither</option>
+        </select>
+    </div>
+    <div id="onChangeLog_2" class="log"></div>
+
+    <hr>
+
+    <div>
+        onChange 3
+        <br>
+        <input type="radio" name="color" value="red"> red
+        <br>
+        <input type="radio" name="color" value="green"> green
+    </div>
+    <div id="onChangeLog_3" class="log"></div>
 
 
     <script src="./script.js"></script>
