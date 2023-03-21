@@ -103,3 +103,116 @@ for (let i=year; i>=minYear; i--)
 
     select_year.append( el_option );
 }
+
+
+
+
+// Controle du formulaire
+// --
+
+const form = document.querySelector('form');
+const el_firstname = document.querySelector('input[name=firstname]');
+const el_lastname = document.querySelector('input[name=lastname]');
+
+
+function setError(target, message)
+{
+    let el_error = document.createElement('div');
+        el_error.classList.add('error');
+        el_error.innerText = message;
+
+    target.classList.add('is-invalid');
+    target.parentNode.append(el_error);
+}
+
+function removeError()
+{
+    const isInvalid = document.querySelectorAll('.is-invalid');
+
+    for (const item of isInvalid)
+    {
+        item.classList.remove('is-invalid');
+    }
+
+
+    const errors = document.querySelectorAll('.error');
+
+    for (const item of errors)
+    {
+        item.remove();
+    }
+}
+
+
+form.addEventListener('submit', event => {
+    
+    let error = false;
+
+    removeError();
+
+    // // Check firstname
+    // let firstname = el_firstname.value;
+
+    // // firstname is required
+    // if (!firstname.length)
+    // {
+    //     setError(el_firstname, "Le champ firstname est obligatoire !!");
+    //     error = true;
+    // }
+    // else if (!/^[a-z][a-z-]*[a-z]?$/i.test(firstname))
+    // {
+    //     setError(el_firstname, "Le prenom doit contenir uniquement des caractères alphabétique.");
+    //     error = true;
+    // }
+    error = checkFirstname();
+
+
+    // Check Lastname
+    let lastname = el_lastname.value;
+
+    // lastname is required
+    if (!lastname.length)
+    {
+        setError(el_lastname, "Le champ lastname est obligatoire !!");
+        error = true;
+    }
+    else if (!/^[a-z][a-z-]*[a-z]?$/i.test(lastname))
+    {
+        setError(el_lastname, "Le Nom doit contenir uniquement des caractères alphabétique.");
+        error = true;
+    }
+
+
+
+    if (error)
+    {
+        // preventDefault arrete le comportement par défaut d'un evenement
+        event.preventDefault();
+    }
+});
+
+
+function checkFirstname()
+{
+    // Check firstname
+    let firstname = el_firstname.value;
+    let error = false;
+
+    // firstname is required
+    if (!firstname.length)
+    {
+        setError(el_firstname, "Le champ firstname est obligatoire !!");
+        error = true;
+    }
+    else if (!/^[a-z][a-z-]*[a-z]?$/i.test(firstname))
+    {
+        setError(el_firstname, "Le prenom doit contenir uniquement des caractères alphabétique.");
+        error = true;
+    }
+
+    return error;
+}
+
+
+el_firstname.addEventListener('blur', checkFirstname);
+
