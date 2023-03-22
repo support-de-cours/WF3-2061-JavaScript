@@ -3,6 +3,8 @@
 // Indiquer les champs obligatoires
 // --
 
+//#region requiredFields
+
 // 1. Cibler tous les éléments qui possède l'attribut "required"
 // 2. remoter sur son élément parent
 // 3. Cibler l'élément frere "label"
@@ -43,10 +45,13 @@ for (const item of arr_required)
     label.classList.add('required');
 }
 
+//#endregion requiredFields
 
 
 // Générer les listes de selections du champ "Birthday"
 // --
+
+//#region selectFields
 
 const months = [
     "janvier",
@@ -104,6 +109,7 @@ for (let i=year; i>=minYear; i--)
     select_year.append( el_option );
 }
 
+//#endregion selectFields
 
 
 
@@ -115,7 +121,14 @@ const el_firstname = document.querySelector('input[name=firstname]');
 const el_lastname = document.querySelector('input[name=lastname]');
 
 
-function setError(target, message)
+/**
+ * Show an error message
+ * 
+ * @param {ElementNode} target 
+ * @param {string} message 
+ * @return void
+ */
+function showError(target, message)
 {
     let el_error = document.createElement('div');
         el_error.classList.add('error');
@@ -125,6 +138,11 @@ function setError(target, message)
     target.parentNode.append(el_error);
 }
 
+/**
+ * Remove all error message
+ * 
+ * @return void
+ */
 function removeError()
 {
     const isInvalid = document.querySelectorAll('.is-invalid');
@@ -143,55 +161,11 @@ function removeError()
     }
 }
 
-
-form.addEventListener('submit', event => {
-    
-    let error = false;
-
-    removeError();
-
-    // // Check firstname
-    // let firstname = el_firstname.value;
-
-    // // firstname is required
-    // if (!firstname.length)
-    // {
-    //     setError(el_firstname, "Le champ firstname est obligatoire !!");
-    //     error = true;
-    // }
-    // else if (!/^[a-z][a-z-]*[a-z]?$/i.test(firstname))
-    // {
-    //     setError(el_firstname, "Le prenom doit contenir uniquement des caractères alphabétique.");
-    //     error = true;
-    // }
-    error = checkFirstname();
-
-
-    // Check Lastname
-    let lastname = el_lastname.value;
-
-    // lastname is required
-    if (!lastname.length)
-    {
-        setError(el_lastname, "Le champ lastname est obligatoire !!");
-        error = true;
-    }
-    else if (!/^[a-z][a-z-]*[a-z]?$/i.test(lastname))
-    {
-        setError(el_lastname, "Le Nom doit contenir uniquement des caractères alphabétique.");
-        error = true;
-    }
-
-
-
-    if (error)
-    {
-        // preventDefault arrete le comportement par défaut d'un evenement
-        event.preventDefault();
-    }
-});
-
-
+/**
+ * Check the firstname constraints
+ * 
+ * @returns {bool} true if firstname is valid
+ */
 function checkFirstname()
 {
     // Check firstname
@@ -201,12 +175,12 @@ function checkFirstname()
     // firstname is required
     if (!firstname.length)
     {
-        setError(el_firstname, "Le champ firstname est obligatoire !!");
+        showError(el_firstname, "Le champ firstname est obligatoire !!");
         error = true;
     }
     else if (!/^[a-z][a-z-]*[a-z]?$/i.test(firstname))
     {
-        setError(el_firstname, "Le prenom doit contenir uniquement des caractères alphabétique.");
+        showError(el_firstname, "Le prenom doit contenir uniquement des caractères alphabétique.");
         error = true;
     }
 
@@ -214,5 +188,44 @@ function checkFirstname()
 }
 
 
+
+form.addEventListener('submit', event => {
+    
+    // On considère que le formulaire n'à pas d'erreur
+    let error = false;
+
+    removeError();
+
+    // Check firstname
+    if (checkFirstname())
+    {
+        error = true;
+    }
+    
+    // Check Lastname
+
+
+    // Check Email
+
+
+    // Check Password
+
+
+    // Confirm Password
+
+
+    // Check Birthday
+
+
+    // Check Terms
+
+
+
+    if (error)
+    {
+        // preventDefault arrete le comportement par défaut d'un evenement
+        event.preventDefault();
+    }
+});
 el_firstname.addEventListener('blur', checkFirstname);
 
