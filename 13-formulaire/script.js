@@ -67,6 +67,8 @@ const months = [
     "novembre",
     "décembre"
 ];
+let monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
 
 // Liste des jours
 const select_day = document.querySelector('[name="birthday[day]"]');
@@ -104,6 +106,7 @@ const minYear = year-100;
 for (let i=year; i>=minYear; i--)
 {
     let el_option = document.createElement('option');
+        el_option.value = i;
         el_option.innerText = i;
 
     select_year.append( el_option );
@@ -123,6 +126,9 @@ const el_email = document.querySelector('input[name=email]');
 const el_password = document.querySelector('input[name=password]');
 const el_confirm_password = document.querySelector('input[name=confirmpwd]');
 const el_agreeTerms = document.querySelector('input[name=agreeTerms]');
+const el_birthday_day = document.querySelector('select[name="birthday[day]"]');
+const el_birthday_month = document.querySelector('select[name="birthday[month]"]');
+const el_birthday_year = document.querySelector('select[name="birthday[year]"]');
 
 
 /**
@@ -318,6 +324,71 @@ function confirmPassword()
     return error;
 }
 
+function checkBirthday()
+{
+    // Recupération des valeurs des champs (type string)
+    let day = el_birthday_day.value;
+    let month = el_birthday_month.value;
+    let year = el_birthday_year.value;
+    let error = false;
+
+    // Convertion des valeur "string" en "number"
+    day = parseInt(day);
+    month = parseInt(month);
+    year = parseInt(year);
+
+    let date_str = month <= 9 ? `0${month}` : month;
+        date_str+= "/";
+        date_str+= day <= 9 ? `0${day}` : day;
+        date_str+= "/";
+        date_str+= year;
+
+    // - doit etre une date valide dans le passé
+    if (!isValidDate(day, month, year))
+    {
+        showError(el_birthday_day.parentNode.parentNode, `Selectionnez une date valide !`);
+        error = true;
+    }
+
+    // - age minimum 13
+    else if (getAge(date_str) < 13)
+    {
+        showError(el_birthday_day.parentNode.parentNode, `Les bébés ne sont pas autorisés !`);
+        error = true;
+    }
+
+    return error;
+}
+
+function isValidDate(day, month, year)
+{
+    // Check the ranges of month and year
+    if(year < 1000 || year > 3000 || month == 0 || month > 12)
+        return false;
+
+    // Adjust for leap years
+    if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+        monthLength[1] = 29;
+
+    // Check the range of the day
+    return day > 0 && day <= monthLength[month - 1];
+}
+
+function getAge(birthday_str) 
+{
+    let today = new Date();
+    let birth_date = new Date(birthday_str);
+    let age = today.getFullYear() - birth_date.getFullYear();
+    let m = today.getMonth() - birth_date.getMonth();
+
+    if ( m < 0 || ( m === 0 && today.getDate() < birth_date.getDate() )) 
+    {
+        age--;
+    }
+    
+    return age;
+}
+
 function checkTerms()
 {
     let agreeTerms = el_agreeTerms.checked;
@@ -329,10 +400,8 @@ function checkTerms()
         error = true;
     }
     
-    return false;
+    return error;
 }
-
-
 
 form.addEventListener('submit', event => {
     
@@ -371,11 +440,11 @@ form.addEventListener('submit', event => {
         error = true;
     }
 
-
     // Check Birthday
-    // - doit etre une date valide dans le passé
-    // - age minimum 13
-
+    if (checkBirthday())
+    {
+        error = true;
+    }
 
     // Check Terms
     if (checkTerms())
@@ -397,3 +466,6 @@ el_lastname.addEventListener('blur', checkLastname);
 el_email.addEventListener('blur', checkEmail);
 el_password.addEventListener('blur', checkPassword);
 el_confirm_password.addEventListener('blur', confirmPassword);
+el_birthday_day.addEventListener('change', checkBirthday);
+el_birthday_month.addEventListener('change', checkBirthday);
+el_birthday_year.addEventListener('change', checkBirthday);
