@@ -203,21 +203,36 @@ form.addEventListener('submit', event => {
     }
     
     // Check Lastname
+    // - required
+    // - alpha chars and - only
 
 
     // Check Email
+    // - required
+    // - user@server.com
 
 
     // Check Password
+    // - required
+    // - longueur min 8 caractères
+    // - longueur max 16 caractères
+    // - au moins un caractère alphabetique
+    // - au moins un caractère Majuscule
+    // - au moins un caractère numerique
+    // - au moins un caractère spécial (+=.?!-_§&@#)
 
 
     // Confirm Password
+    // - doit etre identique au "password"
 
 
     // Check Birthday
+    // - doit etre une date valide dans le passé
+    // - age minimum 13
 
 
     // Check Terms
+    // - la case doit etre cochée
 
 
 
