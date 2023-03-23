@@ -4,7 +4,7 @@
  * /!\ 2 errors
  */
 const url = "http://127.0.0.1:5500/TP-Cart/data.json";
-const catalogNode = document.querySelector("#product");
+const catalogNode = document.querySelector("#products-list");
 const cartProductsNode = document.querySelector("#product");
 const cartAmountNode = document.querySelector("#amount");
 let cart = [];
@@ -52,7 +52,8 @@ async function getData(url)
  * 
  * @param {Object} product 
  * 
- * /!\ 6
+ * /!\ 6 errors
+ * /!\ 3 tasks
  */
 function createProductView(product)
 {
@@ -62,8 +63,9 @@ function createProductView(product)
 
     let imageNode = document.createElement('img');
         imageNode.alt = product.title;
-        imageNode.src = product.illustration;
+        // ...
 
+    // error(s) !
     let divLeftNode = document.createElement('div');
         divLeftNode.classList.add('flex-shrink-0');
         divLeftNode.append('imageNode');
@@ -76,12 +78,14 @@ function createProductView(product)
     // -> Add cart button
     // --
 
+    // error(s) !
     let productTitleNode = document.createElement('h5');
         productTitleNode.innerText = product_title;
 
     let productDescriptionNode = document.createElement('p');
-        productDescriptionNode.innerText = product.description;
+        // ...
 
+    // error(s) !
     let priceNode = document.createElement('div');
         priceNode.class.add('price');
         priceNode.class.add('me-auto');
@@ -96,6 +100,7 @@ function createProductView(product)
         addCartBtnNode.dataset.price = product.price;
         addCartBtnNode.addEventListener('click', addToCart);
 
+    // error(s) !
     let priceLineNode = document.createElement('div');
         priceLineNode.classList.add('d-flex');
         priceLineNode.append(pricenode);
@@ -126,6 +131,7 @@ function createProductView(product)
  * @param {Event} event 
  * 
  * /!\ 0 error
+ * /!\ 2 tasks
  */
 function addToCart(event)
 {
@@ -159,6 +165,7 @@ function addToCart(event)
  * Refresh view cart
  * 
  * /!\ 2 errors
+ * /!\ 2 tasks
  */
 function refreshCartView()
 {
