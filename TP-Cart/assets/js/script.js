@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * /!\ 2 errors
+ * /!\ 2,5 errors
  */
 const url = "http://127.0.0.1:5500/TP-Cart/data.json";
 const catalogNode = document.querySelector("#products-list");
@@ -17,8 +17,8 @@ let cart = [];
  * /!\ 1 error
  */
 (async function(){
-    let products = await getData();
-
+    let products = await getData(url);
+    
     for (const product of products)
     {
         createProductView(product);
@@ -31,7 +31,7 @@ let cart = [];
  * @param {string} url 
  * @returns 
  * 
- * /!\ 0 error
+ * /!\ 0 error !!
  */
 async function getData(url)
 {
